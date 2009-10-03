@@ -5,6 +5,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   
   map.resources :projects
+  map.resources :roles do |role|
+    role.resources :calls
+  end
+  map.resources :calls
+  map.resources :locations
 
   map.root :controller => 'user_sessions', :action => 'new'  
   # map.login :controller => 'user_sessions', :action => 'new'

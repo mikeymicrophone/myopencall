@@ -1,0 +1,48 @@
+<p>
+  <b>Name:</b>
+  <%=h @location.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @location.description %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @location.address %>
+</p>
+
+<p>
+  <b>Line2:</b>
+  <%=h @location.line2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @location.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @location.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @location.zip %>
+</p>
+
+<p>
+  <b>Floor:</b>
+  <%=h @location.floor %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%=h @location.room %>
+</p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

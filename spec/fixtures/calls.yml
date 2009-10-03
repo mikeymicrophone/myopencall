@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  role_id: 1
+  location_id: 1
+  time: 2009-10-03 18:14:37
+  creator_id: 1
+
+two:
+  project_id: 1
+  role_id: 1
+  location_id: 1
+  time: 2009-10-03 18:14:37
+  creator_id: 1

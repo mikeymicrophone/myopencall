@@ -1,4 +1,5 @@
 user can schedule a call
+specify the duration/ end time of a call
 add details to a call
 request an appointment
 approve an appointment
@@ -20,3 +21,49 @@ view all news
 
 view upcoming calls
 view past calls
+
+view calls in an area
+
+call for extras
+call for a role: 
+hairstylists, dancers
+
+verify the legitimacy of a call
+testimonials for users
+view all testimonials about a user
+
+view all testimonials written by a user
+
+leave negative feedback/ flag a user as a fraud
+
+import calls/events from other sites
+
+search
+
+notification of new calls (by role)
+
+portfolio/resume
+
+calendar view
+
+register for certain roles
+links on footer to your roles
+feed of new calls for your role
+
+
+feedback
+
+invitations
+refer a call to an existing user
+
+
+account summary
+
+bookmark/favorite a call/project (interest)
+
+deliver reminders
+
+sms reminders
+
+anonymize email (craig's list)
+

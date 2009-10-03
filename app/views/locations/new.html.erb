@@ -1,0 +1,53 @@
+<h1>New location</h1>
+
+<% form_for(@location) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description, "Description, directions" %><br />
+    <%= f.text_area :description, :size => '40x4' %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :line2, "line 2" %><br />
+    <%= f.text_field :line2 %>
+  </p>
+  <div>
+    <div>
+      <%= f.label :city %><br>
+      <%= f.text_field :city, :size => 12 %>
+    </div>
+    <div>
+      <%= f.label :state %><br>
+      <%= f.text_field :state, :size => 2 %>
+    </div>
+    <div>
+      <%= f.label :zip %><br />
+      <%= f.text_field :zip, :size => 7 %>
+    </div>
+  </div>
+  <div class='cleardiv'></div>
+  <div>
+    <div>
+      <%= f.label :floor %><br />
+      <%= f.text_field :floor, :size => 4 %>
+    </div>
+    <div>
+      <%= f.label :room %><br />
+      <%= f.text_field :room, :size => 6 %>
+    </div>
+  </div>
+  <div class='cleardiv'></div>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', locations_path %>

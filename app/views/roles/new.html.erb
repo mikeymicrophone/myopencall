@@ -1,6 +1,6 @@
-<h1>list a project</h1>
+<h1>New role</h1>
 
-<% form_for(@project) do |f| %>
+<% form_for(@role) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -9,11 +9,11 @@
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.wysihat_editor :description, :size => '60x5' %>
+    <%= f.text_area :description, :size => '30x4' %>
   </p>
   <p>
-    <%= f.submit 'save' %>
+    <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', roles_path %>

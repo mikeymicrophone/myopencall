@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-    @project = Project.new(params[:project])
+    @project = Project.new(params[:project].merge(:creator => current_user))
 
     respond_to do |format|
       if @project.save

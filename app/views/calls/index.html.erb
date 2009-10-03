@@ -1,0 +1,28 @@
+<h1>Listing calls
+  <% if @role %>
+    <%= " for #{@role.name}" %>
+  <% end %>
+</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Role</th>
+    <th>Location</th>
+    <th>Time</th>
+  </tr>
+
+<% @calls.each do |call| %>
+  <tr>
+    <td><%=h call.project.name %></td>
+    <td><%=h call.role.name %></td>
+    <td><%=h call.location.name %></td>
+    <td><%=h call.time %></td>
+    <td><%= link_to 'Show', call %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New call', new_call_path %>

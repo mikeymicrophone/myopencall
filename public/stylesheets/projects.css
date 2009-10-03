@@ -1,0 +1,19 @@
+h2.project {
+	font-size: 2.4em;
+	font-style: italic;
+	font-weight: bold;
+}
+
+p.project {
+	margin: 14px;
+}
+
+a.new {
+	float: right;
+}
+
+#projects .project a {
+	color: #220B81;
+	font-size: 1.7em;
+	text-decoration: underline;
+}

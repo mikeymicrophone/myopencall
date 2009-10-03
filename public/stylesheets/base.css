@@ -1,0 +1,46 @@
+body {
+	font-family: Arial;
+}
+
+a {
+	color: #51E0DF;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.15em;
+}
+
+#border {
+	padding: 50px;
+}
+
+#box {
+	background-color: #E6E6E6;
+	-webkit-border-radius: 30px;
+	padding: 18px;
+}
+
+#login {
+	float: right;
+	padding: 11px;
+	margin: 19px;
+}
+
+#login a {
+	color: #99040F;
+	font-size: 1.11em;
+}
+
+#links {
+	padding: 10px;
+	float: left;
+}
+
+#links a {
+	color: #259913;
+	font-size: 1.22em;
+	margin: 8px;
+}
+
+.cleardiv {
+	clear:both;
+}

@@ -8,7 +8,9 @@ module ApplicationHelper
   end
   
   def resource_links
-    link_to('projects', projects_path) + ' ' + link_to('users', users_path)
+    ['projects', 'users', 'locations', 'roles', 'calls'].map do |res|
+      link_to(res, '/' + res)
+    end
   end
 
   def google_analytics

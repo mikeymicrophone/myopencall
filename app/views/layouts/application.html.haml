@@ -5,8 +5,12 @@
     %title
       My Open Call - the free directory for casting calls
   %body
-    .login
-      = login_stuff
-    .links
-      = resource_links
-    = yield
+    #border
+      #links
+        = resource_links
+      #login
+        = login_stuff
+      .cleardiv
+      #box
+        = yield
+      
