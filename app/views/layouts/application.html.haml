@@ -1,8 +1,12 @@
 %html
   %head
+    = javascript_include_tag :defaults#, 'wysihat', 'wysihat_engine', 'facebox'
+    = stylesheet_link_tag :all
     %title
       My Open Call - the free directory for casting calls
   %body
     .login
       = login_stuff
-      = yield
+    .links
+      = resource_links
+    = yield

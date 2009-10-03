@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'andand'
   config.gem 'paperclip'
   config.gem 'haml'
+  config.gem 'wysihat-engine'
   
   config.time_zone = 'UTC'
 

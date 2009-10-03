@@ -6,6 +6,10 @@ module ApplicationHelper
       link_to('log in', new_user_session_path) + ' ' + link_to('sign up', new_user_path)
     end
   end
+  
+  def resource_links
+    link_to('projects', projects_path) + ' ' + link_to('users', users_path)
+  end
 
   def google_analytics
     <<-GOOGLE_ANALYTICS
