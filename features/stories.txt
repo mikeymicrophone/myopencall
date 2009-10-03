@@ -1,0 +1,22 @@
+user can schedule a call
+add details to a call
+request an appointment
+approve an appointment
+reject an appointment
+
+create a project
+add a scene
+add news about a project
+add detail about a scene
+
+add detail to profile
+make a detail private
+allow someone to view a private detail
+express interest in a project
+
+receive a reminder about a call
+view news about a project
+view all news
+
+view upcoming calls
+view past calls
