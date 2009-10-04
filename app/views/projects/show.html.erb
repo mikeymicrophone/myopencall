@@ -6,5 +6,10 @@
   <%=h @project.description %>
 </p>
 
+<%= 'needed: ' unless @project.roles.empty? %>
+
+<% @project.roles.each do |role| %>
+  <%= link_to role.name, project_role_calls_path(@project, role) %>
+<% end %>
 
 <%= link_to 'edit', edit_project_path(@project) if current_user.andand.==(@project.creator) %>

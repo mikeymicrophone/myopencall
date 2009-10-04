@@ -12,8 +12,7 @@ a.new {
 	float: right;
 }
 
-#projects .project a {
-	color: #220B81;
+#projects .project a.name {
 	font-size: 1.7em;
 	text-decoration: underline;
 }
