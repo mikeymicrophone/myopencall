@@ -1,35 +1,23 @@
 <p>
-  <b>Name:</b>
-  <%=h @location.name %>
+  <b><%=h @location.name %></b>
 </p>
 
+<%= link_to(pluralize(@location.calls.count, 'call'), location_calls_path(@location)) %>
+
 <p>
-  <b>Description:</b>
+  <%= 'Description/directions:' if @location.description.present? %>
   <%=h @location.description %>
 </p>
 
 <p>
-  <b>Address:</b>
-  <%=h @location.address %>
-</p>
-
-<p>
-  <b>Line2:</b>
+  <%=h @location.address %><br>
+  
   <%=h @location.line2 %>
 </p>
 
 <p>
-  <b>City:</b>
-  <%=h @location.city %>
-</p>
-
-<p>
-  <b>State:</b>
+  <%=h @location.city %>, 
   <%=h @location.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
   <%=h @location.zip %>
 </p>
 
@@ -42,7 +30,3 @@
   <b>Room:</b>
   <%=h @location.room %>
 </p>
-
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>

@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :wysihat_files
 
-  map.resources :users
+  map.resources :users do |user|
+    user.resources :projects
+  end
   map.resources :user_sessions
   
   map.resources :projects do |project|

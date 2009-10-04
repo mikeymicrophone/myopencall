@@ -2,8 +2,12 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.all
-
+    @projects = if params[:user_id]
+      Project.find_all_by_creator_id(params[:user_id])
+    else
+      Project.all
+    end
+      
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
