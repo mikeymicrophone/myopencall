@@ -3,8 +3,19 @@ class CallsController < ApplicationController
   # GET /calls.xml
   def index
     @calls = if params[:role_id]
-      @role = Role.find(params[:role_id])
-      @role.calls
+      @role = Role.find params[:role_id]
+      if params[:project_id]
+        @project = Project.find params[:project_id]
+        @role.calls.find_all_by_project_id(params[:project_id])
+      else
+        @role.calls
+      end
+    elsif params[:project_id]
+      @project = Project.find params[:project_id]
+      @project.calls
+    elsif params[:location_id]
+      @location = Location.find params[:location_id]
+      @location.calls
     else
       Call.all
     end

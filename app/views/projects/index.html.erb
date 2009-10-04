@@ -2,6 +2,9 @@
   <% @projects.each do |project| %>
     <div class='project'>
       <%= link_to project.name, project %>
+      <% project.roles.each do |role| %>
+        <%= link_to role.name, project_role_calls_path(project, role) %>
+      <% end %>
     </div>
   <% end %>
 </div>

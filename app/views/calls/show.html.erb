@@ -1,19 +1,19 @@
 <p>
   <b>Project:</b>
-  <%=h @call.project.name %>
+  <%= link_to @call.project.name, project_calls_path(@call.project) %>
 </p>
 
 <p>
   <b>Role:</b>
-  <%=h @call.role.name %>
+  <%= link_to @call.role.name, role_calls_path(@call.role) %>
 </p>
 
 <p>
   <b>Location:</b>
-  <%=h @call.location.name %>
+  <%= link_to @call.location.name, location_calls_path(@call.location) %>
 </p>
 
 <p>
   <b>Time:</b>
-  <%=h @call.time %>
+  <%=h @call.time.strftime("%l:%M %p on %b %d") %>
 </p>

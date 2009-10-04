@@ -1,6 +1,12 @@
-<h1>Listing calls
+<h1>calls
   <% if @role %>
-    <%= " for #{@role.name}" %>
+    <%= " for #{@role.name.pluralize}" %>
+  <% end %>
+  <% if @project %>
+    <%= " on #{@project.name}"%>
+  <% end %>
+  <% if @location %>
+    <%= " at #{@location.name}"%>
   <% end %>
 </h1>
 
@@ -14,10 +20,10 @@
 
 <% @calls.each do |call| %>
   <tr>
-    <td><%=h call.project.name %></td>
-    <td><%=h call.role.name %></td>
-    <td><%=h call.location.name %></td>
-    <td><%=h call.time %></td>
+    <td><%= link_to call.project.name, call.project %></td>
+    <td><%= link_to call.role.name, call.role %></td>
+    <td><%= link_to call.location.name, call.location %></td>
+    <td><%=h call.time.strftime("%l:%M %p on %b %d") %></td>
     <td><%= link_to 'Show', call %></td>
   </tr>
 <% end %>

@@ -16,6 +16,7 @@ a {
 #box {
 	background-color: #E6E6E6;
 	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
 	padding: 18px;
 }
 
@@ -43,4 +44,11 @@ a {
 
 .cleardiv {
 	clear:both;
+}
+
+#synopsis {
+	text-align: center;
+	font-size: 1.2em;
+	padding-left: 70px;
+	padding-right: 70px;
 }
