@@ -1,18 +1,8 @@
-<p>
-  <b>Content:</b>
+
   <%=h @detail.content %>
-</p>
-
-<p>
-  <b>Subject type:</b>
-  <%=h @detail.subject_type %>
-</p>
-
-<p>
-  <b>Subject:</b>
-  <%=h @detail.subject_id %>
-</p>
-
+  <% div_for @detail.subject do %>
+    <%= link_to @detail.subject.name, @detail.subject %>
+  <% end %>
 
 <%= link_to 'Edit', edit_detail_path(@detail) %> |
 <%= link_to 'Back', details_path %>

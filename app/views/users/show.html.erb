@@ -6,9 +6,9 @@
   <%=h @user.login %>
 </h1>
 
-<%= link_to_function 'tell us a detail!' %>
-<% form_for @user.details.new do |f| %>
-  <%= f.wysihat_editor :content %>
+<%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
+<% form_for @user.details.new, :html => {:style => 'display:none;'} do |f| %>
+  <%= f.wysihat_editor :content, :size => '38x3' %>
   <%= f.submit :save %>
   <%= f.check_box :private %>
   <%= f.label :private, '(privately)' %>
