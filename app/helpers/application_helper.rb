@@ -1,7 +1,7 @@
 module ApplicationHelper
   def login_stuff
     if current_user
-      link_to 'log out', user_session_path(current_user_session), :method => :delete
+      link_to(current_user.name, current_user) + ' &nbsp&nbsp' + link_to('log out', user_session_path(current_user_session), :method => :delete)
     else
       link_to('log in', new_user_session_path) + ' ' + link_to('sign up', new_user_path)
     end

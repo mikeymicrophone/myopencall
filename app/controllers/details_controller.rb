@@ -90,7 +90,7 @@ class DetailsController < ApplicationController
   # POST /details
   # POST /details.xml
   def create
-    @detail = Detail.new(params[:detail].merge(:private => (params[:detail][:private] == '0')))
+    @detail = Detail.new(params[:detail].merge(:private => (params[:detail][:private] == '0'), :creator => current_user))
 
     respond_to do |format|
       if @detail.save

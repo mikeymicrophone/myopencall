@@ -26,7 +26,7 @@
   <% if @user == current_user %>
     <%= link_to_function 'show private details', "$('private_details').toggle()" %>
 
-    <div id="private_details" style="display:none;">
+    <div id="private_details" style='display:none'>
       <% @user.details.private.each do |d| %>
         <% div_for d do %>
           <%= d.content %>
