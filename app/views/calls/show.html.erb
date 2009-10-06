@@ -17,3 +17,18 @@
   <b>Time:</b>
   <%=h @call.time.strftime("%l:%M %p on %b %d") %>
 </p>
+<%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
+<% form_for @call.details.new, :html => {:style => 'display:none;'} do |f| %>
+  <%= f.wysihat_editor :content, :size => '38x3' %>
+  <%= f.submit :save %>
+  <%= f.check_box :private %>
+  <%= f.label :private, '(privately)' %>
+  <%= f.hidden_field :subject_type %>
+  <%= f.hidden_field :subject_id %>
+<% end %>
+
+<% @call.details.public.each do |d| %>
+  <% div_for d do %>
+    <%= d.content %>
+  <% end %>
+<% end %>

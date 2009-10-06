@@ -11,5 +11,21 @@
 <% @project.roles.each do |role| %>
   <%= link_to role.name, project_role_calls_path(@project, role) %>
 <% end %>
+<br>
 
 <%= link_to 'edit', edit_project_path(@project) if current_user.andand.==(@project.creator) %>
+<%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
+<% form_for @project.details.new, :html => {:style => 'display:none;'} do |f| %>
+  <%= f.wysihat_editor :content, :size => '38x3' %>
+  <%= f.submit :save %>
+  <%= f.check_box :private %>
+  <%= f.label :private, '(privately)' %>
+  <%= f.hidden_field :subject_type %>
+  <%= f.hidden_field :subject_id %>
+<% end %>
+
+<% @project.details.public.each do |d| %>
+  <% div_for d do %>
+    <%= d.content %>
+  <% end %>
+<% end %>

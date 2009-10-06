@@ -1,5 +1,5 @@
 <% @roles.each do |role| %>
-  <b><%=h role.name %></b>
+  <b><%=link_to role.name, role %></b>
   <%=h role.description %>
   <%= link_to(pluralize(role.calls.count, 'call'), role_calls_path(role)) %><br>
 <% end %>

@@ -1,37 +1,39 @@
-<p class='name'>
-  <%=h @user.name %>
-</p>
+<div id='profile'>
+  <p class='name'>
+    <%=h @user.name %>
+  </p>
 
-<h1>
-  <%=h @user.login %>
-</h1>
+  <h1>
+    <%=h @user.login %>
+  </h1>
 
-<%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
-<% form_for @user.details.new, :html => {:style => 'display:none;'} do |f| %>
-  <%= f.wysihat_editor :content, :size => '38x3' %>
-  <%= f.submit :save %>
-  <%= f.check_box :private %>
-  <%= f.label :private, '(privately)' %>
-  <%= f.hidden_field :subject_type %>
-  <%= f.hidden_field :subject_id %>
-<% end %>
-
-<% @user.details.public.each do |d| %>
-  <% div_for d do %>
-    <%= d.content %>
+  <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
+  <% form_for @user.details.new, :html => {:style => 'display:none;'} do |f| %>
+    <%= f.wysihat_editor :content, :size => '38x3' %>
+    <%= f.submit :save %>
+    <%= f.check_box :private %>
+    <%= f.label :private, '(privately)' %>
+    <%= f.hidden_field :subject_type %>
+    <%= f.hidden_field :subject_id %>
   <% end %>
-<% end %>
 
-<% if @user == current_user %>
-  <%= link_to_function 'show private details', "$('private_details').toggle()" %>
-
-  <div id="private_details" style="display:none;">
-    <% @user.details.private.each do |d| %>
-      <% div_for d do %>
-        <%= d.content %>
-      <% end %>    
+  <% @user.details.public.each do |d| %>
+    <% div_for d do %>
+      <%= d.content %>
     <% end %>
-  </div>
-<% end %>
-<hr>
-<%= link_to '[edit]', edit_user_path(@user) if @user == current_user %>
+  <% end %>
+
+  <% if @user == current_user %>
+    <%= link_to_function 'show private details', "$('private_details').toggle()" %>
+
+    <div id="private_details" style="display:none;">
+      <% @user.details.private.each do |d| %>
+        <% div_for d do %>
+          <%= d.content %>
+        <% end %>    
+      <% end %>
+    </div>
+  <% end %>
+  <hr>
+  <%= link_to '[edit]', edit_user_path(@user) if @user == current_user %>
+</div>
