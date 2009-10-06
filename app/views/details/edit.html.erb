@@ -1,0 +1,24 @@
+<h1>Editing detail</h1>
+
+<% form_for(@detail) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.label :subject_type %><br />
+    <%= f.text_field :subject_type %>
+  </p>
+  <p>
+    <%= f.label :subject_id %><br />
+    <%= f.text_field :subject_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @detail %> |
+<%= link_to 'Back', details_path %>
