@@ -3,6 +3,8 @@
 </h2>
 
 <%= link_to 'calls', state_calls_path(@state) %>
+<br>
+<%= link_to 'locations', state_locations_path(@state) %>
 
 <ul>
   <% @state.cities.each do |city| %>

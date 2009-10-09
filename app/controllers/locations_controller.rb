@@ -2,7 +2,15 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.xml
   def index
-    @locations = Location.all
+    @locations = if params[:city_id]
+      @city = City.find params[:city_id]
+      @city.locations
+    elsif params[:state_id]
+      @state = State.find params[:state_id]
+      @state.locations
+    else
+      Location.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

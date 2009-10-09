@@ -1,4 +1,11 @@
-<h1>locations</h1>
+<h1>locations
+  <% if @city %>
+    <%= " in #{@city.name}" %>
+  <% end %>
+  <% if @state %>
+    <%= " in #{@state.name}" %>
+  <% end %>
+</h1>
 
 <table>
 

@@ -49,9 +49,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :states do |state|
     state.resources :calls
     state.resources :cities
+    state.resources :locations
   end
   map.resources :cities do |city|
     city.resources :calls
+    city.resources :locations
   end
   
   map.resources :details
