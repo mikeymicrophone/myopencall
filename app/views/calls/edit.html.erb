@@ -5,23 +5,23 @@
 
   <p>
     <%= f.label :project_id %><br />
-    <%= f.text_field :project_id %>
+    <%= f.select :project_id, Project.all.map { |p| [p.name, p.id] } %>
   </p>
   <p>
     <%= f.label :role_id %><br />
-    <%= f.text_field :role_id %>
+    <%= f.select :role_id, Role.all.map { |r| [r.name, r.id] } %>
   </p>
   <p>
     <%= f.label :location_id %><br />
-    <%= f.text_field :location_id %>
+    <%= f.select :location_id, Location.all.map { |l| [l.name, l.id] } %>
   </p>
   <p>
     <%= f.label :time %><br />
     <%= f.datetime_select :time %>
   </p>
   <p>
-    <%= f.label :creator_id %><br />
-    <%= f.text_field :creator_id %>
+    <%= f.label :end_time %><br>
+    <%= f.datetime_select :end_time %>
   </p>
   <p>
     <%= f.submit 'Update' %>

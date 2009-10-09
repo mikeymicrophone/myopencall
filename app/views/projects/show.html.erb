@@ -49,10 +49,11 @@
     <%= d.content %>
   <% end %>
 <% end %>
+<% private_details = @project.details.private.find_all_by_creator_id(current_user.id) %>
+<%= link_to_function 'show private details', "$('private_details').toggle()" unless private_details.empty?%>
 
-<%= link_to_function 'show my private details', "$('private_details').toggle()" %>
-<div id='private_details' style='display:none'>
-  <% @project.details.private.find_all_by_creator_id(current_user.id).each do |d| %>
+<div id="private_details" style='display:none'>
+  <% private_details.each do |d| %>
     <% div_for d do %>
       <%= d.content %>
     <% end %>  

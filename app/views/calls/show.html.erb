@@ -15,7 +15,7 @@
 
 <p>
   <b>Time:</b>
-  <%=h @call.time.strftime("%l:%M %p on %b %d") %>
+  <%=h @call.time.strftime("%b %d, %l:%M %p") %> - <%= @call.end_time.andand.strftime("%l:%M %p") %>
 </p>
 
 <div id="interest">
@@ -46,7 +46,7 @@
   <%= f.label :private, '(privately)' %>
   <%= f.hidden_field :subject_type %>
   <%= f.hidden_field :subject_id %>
-<% end %>
+<% end %><br>
 
 <% @call.details.public.each do |d| %>
   <% div_for d do %>
@@ -54,10 +54,11 @@
   <% end %>
 <% end %>
 
-<%= link_to_function 'show private details', "$('private_details').toggle()" %>
+<% private_details = @call.details.private.find_all_by_creator_id(current_user.id) %>
+<%= link_to_function 'show private details', "$('private_details').toggle()" unless private_details.empty?%>
 
 <div id="private_details" style='display:none'>
-  <% @call.details.private.find_all_by_creator_id(current_user.id).each do |d| %>
+  <% private_details.each do |d| %>
     <% div_for d do %>
       <%= d.content %>
     <% end %>    
