@@ -33,7 +33,10 @@
   <% end %>
 </div>
 
-<%= link_to 'edit', edit_project_path(@project) if current_user.andand.==(@project.creator) %>
+<% if current_user_created(@project) %>
+  <%= link_to '[edit]', edit_project_path(@project) %>
+  <%= link_to '[remove]', project_path(@project), :method => :delete %>
+<% end %><br>
 <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
 <% form_for @project.details.new, :html => {:style => 'display:none;'} do |f| %>
   <%= f.wysihat_editor :content, :size => '38x3' %>
@@ -42,7 +45,7 @@
   <%= f.label :private, '(privately)' %>
   <%= f.hidden_field :subject_type %>
   <%= f.hidden_field :subject_id %>
-<% end %>
+<% end %><br>
 
 <% @project.details.public.each do |d| %>
   <% div_for d do %>

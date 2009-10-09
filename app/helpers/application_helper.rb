@@ -7,6 +7,10 @@ module ApplicationHelper
     end
   end
   
+  def current_user_created obj
+    obj.creator && obj.creator == current_user
+  end
+  
   def resource_links
     ['projects', 'users', 'locations', 'roles', 'calls', 'states', 'cities', 'companies', 'details', 'interests'].map do |res|
       link_to(res, '/' + res)

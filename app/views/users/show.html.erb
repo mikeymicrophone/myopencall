@@ -25,6 +25,7 @@
 
   <% if @user == current_user %>
     <%= link_to 'roles I am interested in', user_roles_path(@user) %><br>
+    <%= link_to 'my projects', user_projects_path(@user) %><br>
 
     <%= link_to_function 'show private details', "$('private_details').toggle()" %>
 
