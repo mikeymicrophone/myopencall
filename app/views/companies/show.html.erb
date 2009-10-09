@@ -13,5 +13,7 @@
 </div>
 
 <%= link_to 'employees', company_employments_path(@company) %>
+<br>
+<%= link_to 'involved projects', company_projects_path(@company) %>
 
 <%= link_to '[edit]', edit_company_path(@company) if current_user == @company.creator %>

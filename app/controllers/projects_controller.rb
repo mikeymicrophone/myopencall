@@ -7,6 +7,9 @@ class ProjectsController < ApplicationController
       @involved_projects = @user.involved_projects
       @interesting_projects = @user.interesting_projects
       @user.projects
+    elsif params[:company_id]
+      @company = Company.find params[:company_id]
+      @company.involved_projects
     else
       Project.all
     end
