@@ -22,6 +22,6 @@ class Notifier < ActionMailer::Base
     from          "your open calls <mailer@myopencall.com>"
     recipients    user.email
     sent_on       Time.now
-    body          :root_url => root_url, :name => user.first_name, :account_url => user_url(user)
+    body          :root_url => root_url, :name => user.name, :account_url => user_url(user)
   end
 end

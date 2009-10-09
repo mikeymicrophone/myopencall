@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :user_sessions
   map.resources :password_resets
+  map.activate '/activate/:id/:activation_code', :controller => 'activations', :action => 'create'
   
   map.resources :projects do |project|
     project.resources :calls do |call|

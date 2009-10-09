@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091009022450) do
+ActiveRecord::Schema.define(:version => 20091009050737) do
 
   create_table "calls", :force => true do |t|
     t.integer  "project_id"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20091009022450) do
     t.string   "current_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
   create_table "wysihat_files", :force => true do |t|
