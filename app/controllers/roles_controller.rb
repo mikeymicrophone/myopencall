@@ -2,7 +2,11 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.xml
   def index
-    @roles = Role.all
+    @roles = if params[:user_id]
+      User.find(params[:user_id]).interesting_roles
+    else
+      Role.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

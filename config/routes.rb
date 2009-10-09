@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
       project.resources :details
     end
     user.resources :details
+    user.resources :roles
   end
   map.resources :user_sessions
   map.resources :password_resets

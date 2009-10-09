@@ -24,6 +24,8 @@
   <% end %>
 
   <% if @user == current_user %>
+    <%= link_to 'roles I am interested in', user_roles_path(@user) %>
+
     <%= link_to_function 'show private details', "$('private_details').toggle()" %>
 
     <div id="private_details" style='display:none'>
