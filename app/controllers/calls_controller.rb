@@ -40,7 +40,7 @@ class CallsController < ApplicationController
   # GET /calls/new
   # GET /calls/new.xml
   def new
-    @call = Call.new
+    @call = Call.new params[:call]
 
     respond_to do |format|
       format.html # new.html.erb

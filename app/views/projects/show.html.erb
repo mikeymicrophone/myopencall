@@ -34,6 +34,7 @@
 </div>
 
 <% if current_user_created(@project) %>
+  <%= link_to 'put out a call for help', new_call_path(:call => {:project_id => @project.id}) %>
   <%= link_to '[edit]', edit_project_path(@project) %>
   <%= link_to '[remove]', project_path(@project), :method => :delete %>
 <% end %><br>

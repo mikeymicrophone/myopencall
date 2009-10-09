@@ -1,23 +1,45 @@
-<h1>New call</h1>
+<h1>New call
+  <% if @call.role %>
+    <%= " for #{@call.role.name.pluralize}"%>
+  <% end %>
+  <% if @call.project %>
+    <%= " for #{@call.project.name}"%>
+  <% end %>
+  <% if @call.location %>
+    <%= " at #{@call.location.name}"%>
+  <% end %>
+</h1>
 
 <% form_for(@call) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :project_id %><br />
-    <%= f.select :project_id, Project.all.map { |p| [p.name, p.id] } %>
-    [<%= link_to 'create a new project', new_project_path %>]
-  </p>
-  <p>
-    <%= f.label :role_id %><br />
-    <%= f.select :role_id, Role.all.map { |r| [r.name, r.id] } %>
-    [<%= link_to 'describe another role', new_role_path %>]
-  </p>
-  <p>
-    <%= f.label :location_id %><br />
-    <%= f.select :location_id, Location.all.map { |l| [l.name, l.id] } %>
-    [<%= link_to 'list a new location', new_location_path %>]
-  </p>
+  <% unless @call.project %>
+    <p>
+      <%= f.label :project_id %><br />
+      <%= f.select :project_id, Project.all.map { |p| [p.name, p.id] } %>
+      [<%= link_to 'create a new project', new_project_path %>]
+    </p>
+  <% else %>
+    <%= f.hidden_field :project_id %>
+  <% end %>
+  <% unless @call.role %>
+    <p>
+      <%= f.label :role_id %><br />
+      <%= f.select :role_id, Role.all.map { |r| [r.name, r.id] } %>
+      [<%= link_to 'describe another role', new_role_path %>]
+    </p>
+  <% else %>
+    <%= f.hidden_field :role_id %>
+  <% end %>
+  <% unless @call.location %>
+    <p>
+      <%= f.label :location_id %><br />
+      <%= f.select :location_id, Location.all.map { |l| [l.name, l.id] } %>
+      [<%= link_to 'list a new location', new_location_path %>]
+    </p>
+  <% else %>
+    <%= f.hidden_field :location_id %>
+  <% end %>
   <p>
     <%= f.label :time %><br />
     <%= f.datetime_select :time %>

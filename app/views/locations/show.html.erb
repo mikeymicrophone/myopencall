@@ -31,6 +31,8 @@
   <%=h @location.room %>
 </p>
 
+<%= link_to 'schedule a call at ' + @location.name, new_call_path(:call => {:location_id => @location.id}) %><br>
+
 <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
 <% form_for @location.details.new, :html => {:style => 'display:none;'} do |f| %>
   <%= f.wysihat_editor :content, :size => '38x3' %>

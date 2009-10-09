@@ -5,6 +5,8 @@
 <p>
   <%=h @role.description %>
 </p>
+
+<%= link_to 'put out a call for ' + @role.name.pluralize, new_call_path(:call => {:role_id => @role.id}) %>
 <div id="interest">
   <% if @interest = current_user.andand.is_interested_in(@role) %>
     You have expressed interest in this role. <%= link_to '[edit]', edit_interest_path(@interest) %>
