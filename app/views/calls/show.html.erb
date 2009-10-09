@@ -18,6 +18,11 @@
   <%=h @call.time.strftime("%b %d, %l:%M %p") %> - <%= @call.end_time.andand.strftime("%l:%M %p") %>
 </p>
 
+<% if current_user_created(@call) %>
+  <%= link_to '[edit]', edit_call_path(@call) %>
+  <%= link_to '[cancel]', call_path(@call), :method => :delete %>
+<% end %>
+
 <div id="interest">
   <% if @interest = current_user.andand.is_interested_in(@call) %>
     You have expressed interest in this call. <%= link_to '[edit]', edit_interest_path(@interest) %>
