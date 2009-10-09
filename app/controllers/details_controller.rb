@@ -112,6 +112,7 @@ class DetailsController < ApplicationController
     respond_to do |format|
       if @detail.update_attributes(params[:detail])
         flash[:notice] = 'Detail was successfully updated.'
+        format.js { render :text => 'ok'}
         format.html { redirect_to(@detail) }
         format.xml  { head :ok }
       else

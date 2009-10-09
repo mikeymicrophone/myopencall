@@ -1,0 +1,21 @@
+<h1>show an interest</h1>
+
+<% form_for(@interest) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :subject_id %><br />
+    <%= f.text_field :subject_id %>
+  </p>
+  <p>
+    <%= f.label :subject_type %><br />
+    <%= f.text_field :subject_type %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

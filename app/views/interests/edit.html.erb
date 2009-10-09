@@ -1,0 +1,13 @@
+<h1>revisiting interest</h1>
+
+<% form_for(@interest) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<%= link_to '[remove]', interest_path(@interest), :method => :delete %>

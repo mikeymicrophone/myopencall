@@ -5,7 +5,22 @@
 <p>
   <%=h @role.description %>
 </p>
+<div id="interest">
+  <% if @interest = current_user.andand.is_interested_in(@role) %>
+    You have expressed interest in this role. <%= link_to '[edit]', edit_interest_path(@interest) %>
+  <% elsif current_user %>
+    <%= link_to_remote 'express interest', :url => interests_path(:interest => {:user_id => current_user.id, :subject_type => 'Role', :subject_id => @role.id}), :update => 'interest' %>
+  <% else %>
+    <%= link_to 'notify me of new calls by email' %>
+  <% end %>
+</div>
 
+<h2 class="interested">People interested in this role:</h2>
+<div id="interested">
+  <% @role.interested_users.each do |u| %>
+    <%= link_to u.name + ' (' + u.login + ')', u %>
+  <% end %>
+</div>
 
 <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
 <% form_for @role.details.new, :html => {:style => 'display:none;'} do |f| %>
