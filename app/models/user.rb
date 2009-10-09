@@ -3,13 +3,22 @@ class User < ActiveRecord::Base
   has_many :details, :as => :subject
   has_many :interests
   has_many :interesting_roles, :through => :interests, :source_type => 'Role', :source => :subject
+  has_many :interesting_projects, :through => :interests, :source_type => 'Project', :source => :subject
+  has_many :interesting_calls, :through => :interests, :source_type => 'Call', :source => :subject
   has_many :employments
+  has_many :employers, :through => :employments, :source => :company
+  has_many :involvements, :as => :participant
+  has_many :involved_projects, :through => :involvements, :source => :project
   
   
   acts_as_authentic
   
   def is_interested_in something
     interests.find_by_subject_type_and_subject_id(something.class.name, something.id)
+  end
+
+  def is_involved_in project
+    involvements.find_by_project_id(project.id)
   end
 
   def is_employed_at company

@@ -1,0 +1,19 @@
+<h1>indicate a company's involvement in <%= @involvement.project.name %></h1>
+
+<% form_for(@involvement) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :participant_type %>
+  <%= f.hidden_field :project_id %>
+  <p>
+    <%= f.label :participant_id, 'Company' %><br />
+    <%= f.select :participant_id, current_user.employers.map { |c| [c.name, c.id] } %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'save' %>
+  </p>
+<% end %>

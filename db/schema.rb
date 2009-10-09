@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091009061802) do
+ActiveRecord::Schema.define(:version => 20091009222005) do
 
   create_table "calls", :force => true do |t|
     t.integer  "project_id"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(:version => 20091009061802) do
     t.string   "subject_type"
     t.integer  "user_id"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  create_table "involvements", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "participant_type"
+    t.integer  "participant_id"
+    t.string   "status"
+    t.text     "description"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"

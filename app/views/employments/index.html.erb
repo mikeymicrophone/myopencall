@@ -1,22 +1,10 @@
-<h1>Listing employments</h1>
-
 <table>
-  <tr>
-    <th>Company</th>
-    <th>User</th>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
-
 <% @employments.each do |employment| %>
   <tr>
-    <td><%=h employment.company_id %></td>
-    <td><%=h employment.user_id %></td>
-    <td><%=h employment.title %></td>
-    <td><%=h employment.description %></td>
-    <td><%= link_to 'Show', employment %></td>
-    <td><%= link_to 'Edit', edit_employment_path(employment) %></td>
-    <td><%= link_to 'Destroy', employment, :confirm => 'Are you sure?', :method => :delete %></td>
+
+    <td><%= link_to employment.user.name, employment.user %></td>
+    <td><%= employment.title.present? ? ' is a ' + link_to(employment.title, employment) + ' at ' : ' is ' + link_to('at', employment) %></td>
+    <td><%= link_to employment.company.name, employment.company %></td>
   </tr>
 <% end %>
 </table>

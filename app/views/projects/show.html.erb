@@ -13,13 +13,27 @@
 <% end %>
 <br>
 
+<div id="involvement">
+  <% if @involvement = current_user.andand.is_involved_in(@project) %>
+    You are involved in this project.  <%= link_to '[edit]', edit_involvement_path(@involvement) %>
+  <% elsif current_user %>
+    <%= link_to_remote 'become involved', :url => involvements_path(:involvement => {:participant_type => 'User', :participant_id => current_user.id, :project_id => @project.id}), :update => 'involvement' %>
+  <% else %>
+    <%= link_to 'email someone about this project' %>
+  <% end %>
+</div>
+
+<div id='company_involvement'>
+  <%= link_to 'get a company involved', new_involvement_path(:involvement => {:participant_type => 'Company', :project_id => @project.id}) %>
+</div>
+
 <div id="interest">
   <% if @interest = current_user.andand.is_interested_in(@project) %>
     You have expressed interest in this call. <%= link_to '[edit]', edit_interest_path(@interest) %>
   <% elsif current_user %>
     <%= link_to_remote 'express interest', :url => interests_path(:interest => {:user_id => current_user.id, :subject_type => 'Project', :subject_id => @project.id}), :update => 'interest' %>
   <% else %>
-    <%= link_to 'notify me about this call by email' %>
+    <%= link_to 'notify me about this project by email' %>
   <% end %>
 </div>
 

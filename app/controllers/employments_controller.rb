@@ -2,7 +2,12 @@ class EmploymentsController < ApplicationController
   # GET /employments
   # GET /employments.xml
   def index
-    @employments = Employment.all
+    @employments = if params[:company_id]
+      @company = Company.find params[:company_id]
+      @company.employments
+    else
+      Employment.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

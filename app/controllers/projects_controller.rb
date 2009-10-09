@@ -3,7 +3,10 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def index
     @projects = if params[:user_id]
-      Project.find_all_by_creator_id(params[:user_id])
+      @user = User.find params[:user_id]
+      @involved_projects = @user.involved_projects
+      @interesting_projects = @user.interesting_projects
+      @user.projects
     else
       Project.all
     end

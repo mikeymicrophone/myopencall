@@ -1,0 +1,12 @@
+<h3>
+  <%= link_to @involvement.participant.name, @involvement.participant %> is involved in <%= link_to @involvement.project.name, @involvement.project %>
+</h3>
+
+<p>
+  <%=h @involvement.description %>
+</p>
+
+<% if current_user_created(@involvement) %>
+  <%= link_to '[edit]', edit_involvement_path(@involvement) %>
+  <%= link_to '[remove]', involvement_path(@involvement), :method => :delete %>
+<% end %>

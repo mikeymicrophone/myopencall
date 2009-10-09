@@ -1,16 +1,12 @@
 <div id="projects">
-  <% @projects.each do |project| %>
-    <div class='project'>
-      <%= link_to project.name, project, :class => 'name' %>
-      <% project.roles.each do |role| %>
-        <%= link_to role.name, project_role_calls_path(project, role) %>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render :partial => @projects %>
+  <%= "projects in which you have involved yourself:" if @involved_projects.present? %>
+  <%= render :partial => @involved_projects %>
+  <%= "projects in which you are interested:" if @interesting_projects.present? %>
+  <%= render :partial => @interesting_projects %>
 </div>
 
 <br />
-
 <%= link_to 'my new project', new_project_path, :class => 'new' %>
-<%= link_to 'my projects', user_projects_path(current_user) %>
+<%= link_to 'my projects', user_projects_path(current_user) unless params[:user_id].present? %>
 <div class="cleardiv"></div>

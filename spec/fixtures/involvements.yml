@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  participant_type: MyString
+  participant_id: 1
+  description: MyText
+
+two:
+  project_id: 1
+  participant_type: MyString
+  participant_id: 1
+  description: MyText
