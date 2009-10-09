@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :details
   end
   map.resources :user_sessions
+  map.resources :password_resets
   
   map.resources :projects do |project|
     project.resources :calls do |call|
