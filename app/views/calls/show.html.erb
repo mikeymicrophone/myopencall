@@ -17,6 +17,24 @@
   <b>Time:</b>
   <%=h @call.time.strftime("%l:%M %p on %b %d") %>
 </p>
+
+<div id="interest">
+  <% if @interest = current_user.andand.is_interested_in(@call) %>
+    You have expressed interest in this call. <%= link_to '[edit]', edit_interest_path(@interest) %>
+  <% elsif current_user %>
+    <%= link_to_remote 'express interest', :url => interests_path(:interest => {:user_id => current_user.id, :subject_type => 'Call', :subject_id => @call.id}), :update => 'interest' %>
+  <% else %>
+    <%= link_to 'notify me about this call by email' %>
+  <% end %>
+</div>
+
+<h2 class="interested">People interested in this role:</h2>
+<div id="interested">
+  <% @call.interested_users.each do |u| %>
+    <%= link_to u.name + ' (' + u.login + ')', u %>
+  <% end %>
+</div>
+
 <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
 <% form_for @call.details.new, :html => {:style => 'display:none;'} do |f| %>
   <%= f.wysihat_editor :content, :size => '38x3' %>

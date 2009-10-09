@@ -3,7 +3,8 @@ class Call < ActiveRecord::Base
   belongs_to :role
   belongs_to :project
   has_many :details, :as => :subject
-  
+  has_many :interests, :as => :subject
+  has_many :interested_users, :through => :interests, :source => :user
   named_scope :upcoming, :conditions => ['time > ?', Time.now]
   
   after_create :notify_followers
