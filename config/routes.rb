@@ -12,6 +12,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.activate '/activate/:id/:activation_code', :controller => 'activations', :action => 'create'
   
+  
+  map.resources :companies do |company|
+    company.resources :users
+    company.resources :projects do |project|
+      project.resources :calls
+      project.resources :roles
+    end
+  end
   map.resources :projects do |project|
     project.resources :calls do |call|
       call.resources :details

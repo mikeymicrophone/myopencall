@@ -1,0 +1,15 @@
+<h1>participating companies</h1>
+
+<table>
+
+<% @companies.each do |company| %>
+  <tr>
+    <td><%= link_to company.name, company %></td>
+    <td><%=h company.description %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New company', new_company_path %>

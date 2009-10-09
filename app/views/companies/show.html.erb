@@ -1,0 +1,9 @@
+<p>
+  <b><%=h @company.name %></b>
+</p>
+
+<p>
+  <%=h @company.description %>
+</p>
+
+<%= link_to '[edit]', edit_company_path(@company) if current_user == @company.creator %>
