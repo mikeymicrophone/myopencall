@@ -41,7 +41,7 @@ class LocationsController < ApplicationController
   # POST /locations.xml
   def create
     params[:location][:state] = State.find_or_create_by_name(params[:location].delete(:state))
-    params[:location][:city] = City.find_or_create_by_name_and_state_id(params[:location].delete(:city), params[:location][:state_id])
+    params[:location][:city] = City.find_or_create_by_name_and_state_id(params[:location].delete(:city), params[:location][:state].id)
     @location = Location.new(params[:location])
 
     respond_to do |format|
