@@ -56,7 +56,7 @@ class CallsController < ApplicationController
   # POST /calls
   # POST /calls.xml
   def create
-    @call = Call.new(params[:call])
+    @call = Call.new(params[:call].merge(:creator => current_user))
 
     respond_to do |format|
       if @call.save

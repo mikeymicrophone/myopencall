@@ -32,6 +32,9 @@
 <div id="interested">
   <% @call.interested_users.each do |u| %>
     <%= link_to u.name + ' (' + u.login + ')', u %>
+    <% if @call.creator == current_user %>
+      <%= @call.interests.find_by_user_id(u.id).content %><br>
+    <% end %>
   <% end %>
 </div>
 
