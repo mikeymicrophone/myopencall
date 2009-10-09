@@ -19,6 +19,7 @@
 <div id="interested">
   <% @role.interested_users.each do |u| %>
     <%= link_to u.name + ' (' + u.login + ')', u %>
+    <%= link_to 'show interest', @role.interests.find_by_user_id(u.id) %>
   <% end %>
 </div>
 

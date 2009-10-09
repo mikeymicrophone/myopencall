@@ -1,20 +1,13 @@
-<p>
-  <b>Subject:</b>
-  <%=h @interest.subject_id %>
-</p>
 
-<p>
-  <b>Subject type:</b>
-  <%=h @interest.subject_type %>
-</p>
-
+<b>
+  <%=h @interest.subject.name %>
+</b>
 <p>
   <b>User:</b>
-  <%=h @interest.user_id %>
+  <%=h @interest.user.name %>
 </p>
 
 <p>
-  <b>Content:</b>
   <%=h @interest.content %>
 </p>
 
