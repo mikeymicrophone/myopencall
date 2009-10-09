@@ -1,0 +1,4 @@
+Are you ready?  There is an open call for <%= @call.role.name.pluralize %> for <%= @call.project.name %>.  It will take place <%= time_ago_in_words(@call.time) %> from now at <%= @call.location.name %>.
+
+<%= url_for(@call) %>
+

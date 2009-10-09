@@ -6,6 +6,12 @@ class Call < ActiveRecord::Base
   
   named_scope :upcoming, :conditions => ['time > ?', Time.now]
   
+  after_create :notify_followers
+  
+  def notify_followers
+    InterestMailer.deliver_new_call_notification(self, role.interested_users.map { |u| u.email }.join(', '))
+  end
+  
   def name
     "call for #{role.name.pluralize} at #{location.name} (#{project.name})"
   end
