@@ -12,6 +12,7 @@
   <%=h @appointment.description %>
 </p>
 
+<%= link_to 'accept', appointment_path(@appointment, :appointment => {:status => 'accepted'}), :method => :put unless @appointment.accepted? %>
 
 <%= link_to '[edit]', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>

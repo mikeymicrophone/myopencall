@@ -11,6 +11,7 @@
     <td><%= link_to appointment.visitor.name, appointment.visitor %></td>
     <td><%= link_to appointment.host.name, appointment.host %></td>
     <td><%= link_to 'Show', appointment %></td>
+    <%= link_to 'accept', appointment_path(appointment, :appointment => {:status => 'accepted'}), :method => :put unless appointment.accepted? %>
   </tr>
 <% end %>
 </table>

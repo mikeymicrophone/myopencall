@@ -2,7 +2,12 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.xml
   def index
-    @appointments = Appointment.all
+    @appointments = if current_user
+      @visiting_appointments = current_user.visiting_appointments
+      current_user.hosting_appointments
+    else
+      []
+    end
 
     respond_to do |format|
       format.html # index.html.erb

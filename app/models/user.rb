@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :employers, :through => :employments, :source => :company
   has_many :involvements, :as => :participant
   has_many :involved_projects, :through => :involvements, :source => :project
-  
+  has_many :visiting_appointments, :class_name => 'Appointment', :as => :visitor
+  has_many :hosting_appointments, :class_name => 'Appointment', :as => :host
   
   acts_as_authentic
   
