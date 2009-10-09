@@ -9,7 +9,10 @@
     <%= " at #{@location.name}"%>
   <% end %>
   <% if @city %>
-    <%= " in #{@city.name}"%>
+    <%= " in #{@city.name}" %>
+  <% end %>
+  <% if @state %>
+    <%= " in #{@state.name}" %>
   <% end %>
 </h1>
 

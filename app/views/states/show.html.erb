@@ -2,6 +2,8 @@
   <%=h @state.name %>
 </h2>
 
+<%= link_to 'calls', state_calls_path(@state) %>
+
 <ul>
   <% @state.cities.each do |city| %>
     <li><%= link_to city.name, city %></li>
