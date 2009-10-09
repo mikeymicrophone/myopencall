@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :personal_property, :only => [:edit, :update]
+
+  def personal_property
+    redirect_to(root_url) && false unless current_user.id == params[:id].to_i
+  end
 
   # GET /users
   # GET /users.xml
