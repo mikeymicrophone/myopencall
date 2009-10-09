@@ -28,6 +28,9 @@ ActionController::Routing::Routes.draw do |map|
     location.resources :details
   end
   
+  map.resources :states
+  map.resources :cities
+  
   map.resources :details
 
   map.resources :interests

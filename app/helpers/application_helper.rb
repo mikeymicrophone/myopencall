@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   
   def resource_links
-    ['projects', 'users', 'locations', 'roles', 'calls'].map do |res|
+    ['projects', 'users', 'locations', 'roles', 'calls', 'states', 'cities'].map do |res|
       link_to(res, '/' + res)
     end
   end

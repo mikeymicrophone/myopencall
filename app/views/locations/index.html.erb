@@ -6,8 +6,8 @@
   <tr>
     <td><%= link_to location.name, location %></td>
     <td><%=h location.address %></td>
-    <td><%=h location.city %></td>
-    <td><%=h location.state %></td>
+    <td><%= link_to location.city.name, location.city if location.city %></td>
+    <td><%= link_to location.state.name, location.state if location.state %></td>
   </tr>
 <% end %>
 </table>

@@ -1,0 +1,9 @@
+<h2>
+  <%=h @state.name %>
+</h2>
+
+<ul>
+  <% @state.cities.each do |city| %>
+    <li><%= link_to city.name, city %></li>
+  <% end %>
+</ul>
