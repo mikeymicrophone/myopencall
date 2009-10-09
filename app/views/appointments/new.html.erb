@@ -1,0 +1,50 @@
+<h1>New appointment</h1>
+
+<% form_for(@appointment) do |f| %>
+  <%= f.error_messages %>
+
+  <% unless @appointment.visitor %>
+
+    <p>
+      <%= f.label :visitor_type %><br />
+      <%= f.text_field :visitor_type %>
+    </p>
+    <p>
+      <%= f.label :visitor_id %><br />
+      <%= f.text_field :visitor_id %>
+    </p>
+  <% else %>
+    <%= f.hidden_field :visitor_id %>
+    <%= f.hidden_field :visitor_type %>
+  <% end %>
+  <% unless @appointment.host %>
+    <p>
+      <%= f.label :host_type %><br />
+      <%= f.text_field :host_type %>
+    </p>
+    <p>
+      <%= f.label :host_id %><br />
+      <%= f.text_field :host_id %>
+    </p>
+  <% else %>
+    <%= f.hidden_field :host_id %>
+    <%= f.hidden_field :host_type %>
+  <% end %>
+  <p>
+    <%= f.label :begins_at %>
+    <%= f.datetime_select :begins_at %>
+  </p>
+  <p>
+    <%= f.label :ends_at %>
+    <%= f.datetime_select :ends_at %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'request' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', appointments_path %>

@@ -1,0 +1,17 @@
+<p>
+  <b>Visitor:</b>
+  <%= link_to @appointment.visitor.name, @appointment.visitor %>
+</p>
+
+<p>
+  <b>Host:</b>
+  <%= link_to @appointment.host.name, @appointment.host %>
+</p>
+
+<p>
+  <%=h @appointment.description %>
+</p>
+
+
+<%= link_to '[edit]', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

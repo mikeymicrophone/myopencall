@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091009222005) do
+ActiveRecord::Schema.define(:version => 20091009232350) do
+
+  create_table "appointments", :force => true do |t|
+    t.string   "visitor_type"
+    t.integer  "visitor_id"
+    t.string   "host_type"
+    t.integer  "host_id"
+    t.text     "description"
+    t.string   "status"
+    t.datetime "begins_at"
+    t.datetime "ends_at"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
 
   create_table "calls", :force => true do |t|
     t.integer  "project_id"

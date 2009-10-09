@@ -1,0 +1,24 @@
+<h1>Editing appointment</h1>
+
+<% form_for(@appointment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :begins_at %>
+    <%= f.datetime_select :begins_at %>
+  </p>
+  <p>
+    <%= f.label :ends_at %>
+    <%= f.datetime_select :ends_at %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @appointment %> |
+<%= link_to 'Back', appointments_path %>

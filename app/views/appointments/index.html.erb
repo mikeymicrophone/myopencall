@@ -1,0 +1,20 @@
+<h1>your appointments</h1>
+
+<table>
+  <tr>
+    <th>Visitor</th>
+    <th>Host</th>
+  </tr>
+
+<% @appointments.each do |appointment| %>
+  <tr>
+    <td><%= link_to appointment.visitor.name, appointment.visitor %></td>
+    <td><%= link_to appointment.host.name, appointment.host %></td>
+    <td><%= link_to 'Show', appointment %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New appointment', new_appointment_path %>

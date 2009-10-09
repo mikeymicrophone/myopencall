@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :details
     user.resources :roles
     user.resources :involvements
+    user.resources :appointments
   end
   map.resources :user_sessions
   map.resources :password_resets
@@ -22,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     company.resources :employments
     company.resources :involvements
+    company.resources :appointments
   end
   
   map.resources :employments
@@ -40,11 +42,15 @@ ActionController::Routing::Routes.draw do |map|
     role.resources :calls
     role.resources :details
   end
-  map.resources :calls
+  map.resources :calls do |call|
+    call.resources :appointments
+  end
   map.resources :locations do |location|
     location.resources :calls
     location.resources :details
   end
+  
+  map.resources :appointments
   
   map.resources :states do |state|
     state.resources :calls

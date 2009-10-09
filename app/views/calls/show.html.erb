@@ -23,6 +23,8 @@
   <%= link_to '[cancel]', call_path(@call), :method => :delete %>
 <% end %>
 
+<%= link_to 'request an appointment', new_appointment_path(:appointment => {:host_type => 'Call', :host_id => @call.id, :visitor_type => 'User', :visitor_id => current_user.id}) if current_user %>
+
 <div id="interest">
   <% if @interest = current_user.andand.is_interested_in(@call) %>
     You have expressed interest in this call. <%= link_to '[edit]', edit_interest_path(@interest) %>
