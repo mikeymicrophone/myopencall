@@ -1,0 +1,11 @@
+<p>
+  <%=h @employment.user.name %> works at  <%=h @employment.company.name %>
+  <%= ' as a ' + @employment.title unless @employment.title.blank? %>
+</p>
+
+<p>
+  <%=h @employment.description %>
+</p>
+
+
+<%= link_to '[edit]', edit_employment_path(@employment) if [@employment.user, @employment.creator].include?(current_user) %>

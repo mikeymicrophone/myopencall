@@ -19,7 +19,10 @@ ActionController::Routing::Routes.draw do |map|
       project.resources :calls
       project.resources :roles
     end
+    company.resources :employments
   end
+  
+  map.resources :employments
   map.resources :projects do |project|
     project.resources :calls do |call|
       call.resources :details

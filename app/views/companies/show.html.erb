@@ -6,4 +6,10 @@
   <%=h @company.description %>
 </p>
 
+<div id="employment">
+  <% unless current_user.andand.is_employed_at(@company) %>
+    <%= link_to_remote 'I work here', :url => employments_path(:employment => {:company_id => @company.id, :user_id => current_user.id}), :update => 'employment' %>
+  <% end %>
+</div>
+
 <%= link_to '[edit]', edit_company_path(@company) if current_user == @company.creator %>
