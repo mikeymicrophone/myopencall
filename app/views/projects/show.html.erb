@@ -27,6 +27,9 @@
 <div id="interested">
   <% @project.interested_users.each do |u| %>
     <%= link_to u.name + ' (' + u.login + ')', u %>
+    <% if @project.creator == current_user %>
+      <%= @project.interests.find_by_user_id(current_user.id).content %><br>
+    <% end %>
   <% end %>
 </div>
 
