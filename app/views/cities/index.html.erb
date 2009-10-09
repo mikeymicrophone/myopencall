@@ -4,7 +4,7 @@
 <% @cities.each do |city| %>
   <tr>
     <td><%= link_to city.name, city %></td>
-    <td><%= link_to city.state.name, city.state %></td>
+    <td><%= link_to city.state.andand.name, city.state %></td>
   </tr>
 <% end %>
 </table>
