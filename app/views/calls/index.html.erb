@@ -8,6 +8,9 @@
   <% if @location %>
     <%= " at #{@location.name}"%>
   <% end %>
+  <% if @city %>
+    <%= " in #{@city.name}"%>
+  <% end %>
 </h1>
 
 <table>

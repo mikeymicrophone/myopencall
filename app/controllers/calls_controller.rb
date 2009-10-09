@@ -16,6 +16,9 @@ class CallsController < ApplicationController
     elsif params[:location_id]
       @location = Location.find params[:location_id]
       @location.calls
+    elsif params[:city_id]
+      @city = City.find params[:city_id]
+      @city.calls
     else
       Call.all
     end
