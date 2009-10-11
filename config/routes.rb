@@ -68,8 +68,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :friendships 
   map.resources :followerships
-  map.resources :favorites
-
   map.root :controller => 'user_sessions', :action => 'new'  
   # map.login :controller => 'user_sessions', :action => 'new'
   # map.logout :controller => 'user_sessions', :action => 'destroy'

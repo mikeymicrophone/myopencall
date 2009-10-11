@@ -13,7 +13,9 @@
   <div id="followership">
     <%= link_to_remote 'follow', :url => followerships_path(:followership => {:followed_id => @user.id}), :update => 'followership' %>
   </div>
-  <%= link_to 'favorite' %>
+  <div id="favorite">
+    <%= link_to_remote 'favorite', :url => favorites_path(:favorite => {:favorite_type => 'User', :favorite_id => @user.id}), :update => 'favorite' %>
+  </div>
 
   <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
   <% form_for @user.details.new, :html => {:style => 'display:none;'} do |f| %>

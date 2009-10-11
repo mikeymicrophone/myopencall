@@ -1,0 +1,18 @@
+<p>
+  <b>Favorite:</b>
+  <%=h @favorite.favorite_id %>
+</p>
+
+<p>
+  <b>Favorite type:</b>
+  <%=h @favorite.favorite_type %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%=h @favorite.creator_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_favorite_path(@favorite) %> |
+<%= link_to 'Back', favorites_path %>

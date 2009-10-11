@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :visiting_appointments, :class_name => 'Appointment', :as => :visitor
   has_many :hosting_appointments, :class_name => 'Appointment', :as => :host
   has_many :calls, :foreign_key => :creator_id
+  has_many :favorites, :as => :favorite
+  has_many :friendships, :foreign_key => :accepter_id
+  has_many :followerships, :foreign_key => :followed_id
   # has_many :call_appointments, :through => :calls
   
   acts_as_authentic
