@@ -2,19 +2,36 @@
 
 <table>
   <tr>
-    <th>Visitor</th>
-    <th>Host</th>
+    <% if @appointments.present? %>
+      <th>Appointments you're hosting:</th>
+    <% end %>
   </tr>
 
 <% @appointments.each do |appointment| %>
   <tr>
     <td><%= link_to appointment.visitor.name, appointment.visitor %></td>
-    <td><%= link_to appointment.host.name, appointment.host %></td>
-    <td><%= link_to 'Show', appointment %></td>
-    <%= link_to 'accept', appointment_path(appointment, :appointment => {:status => 'accepted'}), :method => :put unless appointment.accepted? %>
+    <td><%= link_to '[show]', appointment %></td>
+    <td><%= link_to 'accept', appointment_path(appointment, :appointment => {:status => 'accepted'}), :method => :put unless appointment.accepted? %>
+    <%= link_to 'reject', appointment_path(appointment, :appointment => {:status => 'rejected'}), :method => :put unless appointment.rejected? %>
+    <%= link_to 'reschedule', edit_appointment_path(appointment) %></td>
   </tr>
 <% end %>
+
+<tr>
+  <% if @visiting_appointments.present? %>
+    <th>Appointments you've requested:</th>
+  <% end %>
+</tr>
+<tr>
+  <% @visiting_appointments.each do |appointment| %>
+    <td><%= link_to appointment.host.name, appointment.host %></td>
+    <td><%= link_to '[show]', appointment %></td>
+    <td><%= appointment.status %></td>
+  <% end %>
+</tr>
+
 </table>
+
 
 <br />
 

@@ -6,4 +6,8 @@ class Appointment < ActiveRecord::Base
   def accepted?
     status == 'accepted'
   end
+  
+  def rejected?
+    status == 'rejected'
+  end
 end

@@ -11,8 +11,11 @@
 <p>
   <%=h @appointment.description %>
 </p>
-
-<%= link_to 'accept', appointment_path(@appointment, :appointment => {:status => 'accepted'}), :method => :put unless @appointment.accepted? %>
-
+<% if current_user.is_hosting(@appointment) %>
+  <%= link_to 'accept', appointment_path(@appointment, :appointment => {:status => 'accepted'}), :method => :put unless @appointment.accepted? %>
+  <%= link_to 'reject', appointment_path(@appointment, :appointment => {:status => 'rejected'}), :method => :put unless @appointment.rejected? %>
+  <%= link_to 'reschedule', edit_appointment_path(@appointment) %>
+<% end %>
+<br>
 <%= link_to '[edit]', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>

@@ -11,4 +11,16 @@
   </p>
 <% end %>
 
+
+<% if @company = @involvement.company %>
+  Which employees are involved?<br>
+  <% @company.employees.each do |e| %>
+    <% if e.is_involved_in(@involvement.project) %>
+      <%= e.name + ' is involved.'%><br>
+    <% else %>
+      <%= e.name + link_to(' is involved?', involvements_path(:involvement => {:participant_type => 'User', :participant_id => e.id, :project_id => @involvement.project_id}), :method => :post)%>
+    <% end %>
+  <% end %>
+<% end %>
+<br>
 <%= link_to '[remove]', @involvement, :method => :delete %>

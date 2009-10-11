@@ -1,4 +1,8 @@
-<h1>New appointment</h1>
+<h1>request appointment
+  <% if @appointment.host %>
+    <%= " with: #{@appointment.host.name}" %>
+  <% end %>
+</h1>
 
 <% form_for(@appointment) do |f| %>
   <%= f.error_messages %>

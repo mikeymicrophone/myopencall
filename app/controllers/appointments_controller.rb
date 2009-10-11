@@ -45,7 +45,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.xml
   def create
-    @appointment = Appointment.new(params[:appointment].merge(:creator => current_user))
+    @appointment = Appointment.new(params[:appointment].merge(:creator => current_user, :status => 'requested'))
 
     respond_to do |format|
       if @appointment.save

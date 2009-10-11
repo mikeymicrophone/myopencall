@@ -1,26 +1,9 @@
-<h1>Listing involvements</h1>
-
-<table>
-  <tr>
-    <th>Project</th>
-    <th>Participant type</th>
-    <th>Participant</th>
-    <th>Description</th>
-  </tr>
-
+<table id="involvements">
 <% @involvements.each do |involvement| %>
   <tr>
-    <td><%=h involvement.project_id %></td>
-    <td><%=h involvement.participant_type %></td>
-    <td><%=h involvement.participant_id %></td>
-    <td><%=h involvement.description %></td>
-    <td><%= link_to 'Show', involvement %></td>
-    <td><%= link_to 'Edit', edit_involvement_path(involvement) %></td>
-    <td><%= link_to 'Destroy', involvement, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to involvement.participant.name, involvement.participant, :class => involvement.participant_type.downcase %></td>
+    <td><%= link_to 'is involved in', involvement %></td>
+    <td><%= link_to involvement.project.name, involvement.project %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New involvement', new_involvement_path %>

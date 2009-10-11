@@ -16,3 +16,11 @@ a.new {
 	font-size: 1.7em;
 	text-decoration: underline;
 }
+
+#involvements a.company {
+	color: #2F3A71;
+}
+
+#involvements a.user {
+	color: #697ACE;
+}

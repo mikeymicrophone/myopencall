@@ -12,7 +12,7 @@ module ApplicationHelper
   end
   
   def resource_links
-    ['projects', 'users', 'locations', 'roles', 'calls', 'states', 'cities', 'companies', 'details', 'interests'].map do |res|
+    ['projects', 'users', 'locations', 'roles', 'calls', 'states', 'cities', 'companies', 'details', 'interests', 'appointments', 'employments', 'involvements'].map do |res|
       link_to(res, '/' + res)
     end
   end

@@ -25,6 +25,17 @@ class User < ActiveRecord::Base
   def is_employed_at company
     employments.find_by_company_id(company.id)
   end
+  
+  def is_hosting appointment
+    case appointment.host
+    when User
+      appointment.host == self
+    when Call
+      appointment.host.creator == self
+    when Company
+      is_employed_at apointment.host
+    end
+  end
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
