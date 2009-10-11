@@ -1,0 +1,23 @@
+<h1>New friendship</h1>
+
+<% form_for(@friendship) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :accepter_id %><br />
+    <%= f.text_field :accepter_id %>
+  </p>
+  <p>
+    <%= f.label :requester_id %><br />
+    <%= f.text_field :requester_id %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', friendships_path %>

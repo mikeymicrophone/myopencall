@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :involved_projects, :through => :involvements, :source => :project
   has_many :visiting_appointments, :class_name => 'Appointment', :as => :visitor
   has_many :hosting_appointments, :class_name => 'Appointment', :as => :host
+  has_many :calls, :foreign_key => :creator_id
+  # has_many :call_appointments, :through => :calls
   
   acts_as_authentic
   

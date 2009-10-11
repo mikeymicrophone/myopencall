@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  accepter_id: 1
+  requester_id: 1
+  status: MyString
+
+two:
+  accepter_id: 1
+  requester_id: 1
+  status: MyString

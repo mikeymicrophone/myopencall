@@ -6,6 +6,12 @@
   <h1>
     <%=h @user.login %>
   </h1>
+  
+  <div id="friendship">
+    <%= link_to_remote 'friend', :url => friendships_path(:friendship => {:accepter_id => @user.id}), :update => 'friendship' %>
+  </div>
+  <%= link_to 'follow' %>
+  <%= link_to 'favorite' %>
 
   <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
   <% form_for @user.details.new, :html => {:style => 'display:none;'} do |f| %>

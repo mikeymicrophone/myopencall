@@ -1,0 +1,18 @@
+<p>
+  <b>Accepter:</b>
+  <%=h @friendship.accepter_id %>
+</p>
+
+<p>
+  <b>Requester:</b>
+  <%=h @friendship.requester_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @friendship.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_friendship_path(@friendship) %> |
+<%= link_to 'Back', friendships_path %>

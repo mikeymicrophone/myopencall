@@ -1,0 +1,15 @@
+<h1>Listing friendships</h1>
+
+<table>
+
+<% @friendships.each do |friendship| %>
+  <tr>
+    <td><%=h friendship.accepter.name %></td>
+    <td><%= link_to 'Show', friendship %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New friendship', new_friendship_path %>
