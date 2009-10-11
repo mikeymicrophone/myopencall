@@ -1,0 +1,24 @@
+<h1>Editing followership</h1>
+
+<% form_for(@followership) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :follower_id %><br />
+    <%= f.text_field :follower_id %>
+  </p>
+  <p>
+    <%= f.label :followed_id %><br />
+    <%= f.text_field :followed_id %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @followership %> |
+<%= link_to 'Back', followerships_path %>

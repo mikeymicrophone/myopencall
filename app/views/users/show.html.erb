@@ -10,7 +10,9 @@
   <div id="friendship">
     <%= link_to_remote 'friend', :url => friendships_path(:friendship => {:accepter_id => @user.id}), :update => 'friendship' %>
   </div>
-  <%= link_to 'follow' %>
+  <div id="followership">
+    <%= link_to_remote 'follow', :url => followerships_path(:followership => {:followed_id => @user.id}), :update => 'followership' %>
+  </div>
   <%= link_to 'favorite' %>
 
   <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>

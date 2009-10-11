@@ -1,0 +1,18 @@
+<p>
+  <b>Follower:</b>
+  <%=h @followership.follower_id %>
+</p>
+
+<p>
+  <b>Followed:</b>
+  <%=h @followership.followed_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @followership.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_followership_path(@followership) %> |
+<%= link_to 'Back', followerships_path %>

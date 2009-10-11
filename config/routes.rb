@@ -66,7 +66,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :interests
   
-  map.resources :friendships
+  map.resources :friendships 
   map.resources :followerships
   map.resources :favorites
 

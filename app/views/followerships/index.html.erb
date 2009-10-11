@@ -1,0 +1,24 @@
+<h1>Listing followerships</h1>
+
+<table>
+  <tr>
+    <th>Follower</th>
+    <th>Followed</th>
+    <th>Status</th>
+  </tr>
+
+<% @followerships.each do |followership| %>
+  <tr>
+    <td><%=h followership.follower_id %></td>
+    <td><%=h followership.followed_id %></td>
+    <td><%=h followership.status %></td>
+    <td><%= link_to 'Show', followership %></td>
+    <td><%= link_to 'Edit', edit_followership_path(followership) %></td>
+    <td><%= link_to 'Destroy', followership, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New followership', new_followership_path %>

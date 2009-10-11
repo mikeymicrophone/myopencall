@@ -1,0 +1,2 @@
+module FollowershipsHelper
+end
