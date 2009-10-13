@@ -1,0 +1,5 @@
+<% @friendships.each do |f| %>
+  <%= link_to f.requester.name, f.requester %>
+  <%= link_to 'accept', friendship_path(f, :friendship => {:status => 'accepted'}), :method => :put %>
+  <%= link_to 'reject', friendship_path(f, :friendship => {:status => 'rejected'}), :method => :put %><br>
+<% end %>

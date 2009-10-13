@@ -7,15 +7,18 @@
     <%=h @user.login %>
   </h1>
   
-  <div id="friendship">
-    <%= link_to_remote 'friend', :url => friendships_path(:friendship => {:accepter_id => @user.id}), :update => 'friendship' %>
-  </div>
-  <div id="followership">
-    <%= link_to_remote 'follow', :url => followerships_path(:followership => {:followed_id => @user.id}), :update => 'followership' %>
-  </div>
-  <div id="favorite">
-    <%= link_to_remote 'favorite', :url => favorites_path(:favorite => {:favorite_type => 'User', :favorite_id => @user.id}), :update => 'favorite' %>
-  </div>
+  <% unless current_user == @user %>
+    <div id="friendship">
+      <%= link_to_remote 'friend', :url => friendships_path(:friendship => {:accepter_id => @user.id}), :update => 'friendship' unless current_user.is_friends_with(@user) %>
+    </div>
+    <div id="followership">
+      <%= link_to_remote 'follow', :url => followerships_path(:followership => {:followed_id => @user.id}), :update => 'followership' unless current_user.is_following(@user) %>
+    </div>
+    <div id="favorite">
+      <%= link_to_remote 'favorite', :url => favorites_path(:favorite => {:favorite_type => 'User', :favorite_id => @user.id}), :update => 'favorite' unless current_user.favorite_users.include?(@user)%>
+    </div>
+  <% end %>  
+  <%= link_to 'friends', user_friendships_path(@user) %><br>
 
   <%= link_to_function 'tell us a detail!', "$('new_detail').toggle();" %>
   <% form_for @user.details.new, :html => {:style => 'display:none;'} do |f| %>

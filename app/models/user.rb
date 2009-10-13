@@ -12,12 +12,34 @@ class User < ActiveRecord::Base
   has_many :visiting_appointments, :class_name => 'Appointment', :as => :visitor
   has_many :hosting_appointments, :class_name => 'Appointment', :as => :host
   has_many :calls, :foreign_key => :creator_id
-  has_many :favorites, :as => :favorite
-  has_many :friendships, :foreign_key => :accepter_id
+  has_many :favorites, :foreign_key => :creator_id
+  has_many :favorite_users, :through => :favorites, :source => :favorite, :source_type => 'User'
+  has_many :favoriteds, :as => :favorite, :class_name => 'Favorite'
+  has_many :a_friendships, :foreign_key => :accepter_id, :class_name => 'Friendship', :conditions => {:status => 'accepted'}
+  has_many :b_friendships, :foreign_key => :requester_id, :class_name => 'Friendship', :conditions => {:status => 'accepted'}
+  has_many :requested_friendships, :foreign_key => :accepter_id, :class_name => 'Friendship', :conditions => {:status => 'requested'}
   has_many :followerships, :foreign_key => :followed_id
+  has_many :followings, :foreign_key => :follower_id, :class_name => 'Followership'
   # has_many :call_appointments, :through => :calls
   
   acts_as_authentic
+  
+  def friendships opts = {}
+    friendships = a_friendships + b_friendships
+    if opts[:random] = false
+      friends
+    else
+      friendships.sort_by { rand }
+    end
+  end
+  
+  def is_friends_with friend
+    friendships.map { |f| [f.requester_id, f.accepter_id] }.flatten.include?(friend.id)
+  end
+  
+  def is_following what
+    followings.map { |f| f.followed_id }.include?(what.id)
+  end
   
   def is_interested_in something
     interests.find_by_subject_type_and_subject_id(something.class.name, something.id)

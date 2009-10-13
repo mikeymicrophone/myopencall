@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :roles
     user.resources :involvements
     user.resources :appointments
+    user.resources :friendships
   end
   map.resources :user_sessions
   map.resources :password_resets
@@ -66,8 +67,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :interests
   
-  map.resources :friendships 
+  map.resources :friendships, :collection => {:requests => :get}
   map.resources :followerships
+  map.resources :favorites
   map.root :controller => 'user_sessions', :action => 'new'  
   # map.login :controller => 'user_sessions', :action => 'new'
   # map.logout :controller => 'user_sessions', :action => 'destroy'

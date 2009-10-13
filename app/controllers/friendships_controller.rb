@@ -2,12 +2,21 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.xml
   def index
-    @friendships = Friendship.all
+    @friendships = if params[:user_id]
+      @user = User.find params[:user_id]
+      @user.friendships
+    else
+      Friendship.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @friendships }
     end
+  end
+  
+  def requests
+    @friendships = current_user.requested_friendships
   end
 
   # GET /friendships/1

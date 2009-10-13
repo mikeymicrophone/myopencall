@@ -45,6 +45,7 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       if @favorite.save
         flash[:notice] = "you have favorited #{@favorite.favorite.name}."
+        format.js   { render :text => flash[:notice]}
         format.html { redirect_to(@favorite) }
         format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
       else

@@ -1,18 +1,6 @@
 <p>
-  <b>Accepter:</b>
-  <%=h @friendship.accepter_id %>
+  <%=h @friendship.accepter.name %> and 
+  <%=h @friendship.requester.name %> exchanged friendship tokens
+  <%= time_ago_in_words(@friendship.created_at) %> ago.
 </p>
 
-<p>
-  <b>Requester:</b>
-  <%=h @friendship.requester_id %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%=h @friendship.status %>
-</p>
-
-
-<%= link_to 'Edit', edit_friendship_path(@friendship) %> |
-<%= link_to 'Back', friendships_path %>
