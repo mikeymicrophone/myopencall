@@ -1,20 +1,11 @@
-<h1>Listing favorites</h1>
-
+<h1>favorites</h1>
 <table>
-  <tr>
-    <th>Favorite</th>
-    <th>Favorite type</th>
-    <th>Creator</th>
-  </tr>
 
 <% @favorites.each do |favorite| %>
   <tr>
-    <td><%=h favorite.favorite_id %></td>
-    <td><%=h favorite.favorite_type %></td>
-    <td><%=h favorite.creator_id %></td>
-    <td><%= link_to 'Show', favorite %></td>
-    <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
-    <td><%= link_to 'Destroy', favorite, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to favorite.favorite.name, favorite.favorite %></td>
+    <td><%= favorite.favorite_type %></td>
+    <td><%= link_to '[remove]', favorite, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   # GET /favorites
   # GET /favorites.xml
   def index
-    @favorites = Favorite.all
+    @favorites = current_user.andand.favorites || []
 
     respond_to do |format|
       format.html # index.html.erb
