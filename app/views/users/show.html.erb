@@ -37,6 +37,7 @@
   <% end %>
 
   <% if @user == current_user %>
+    <%= link_to 'following activity', followerships_path %><br>
     <%= link_to 'roles I am interested in', user_roles_path(@user) %><br>
     <%= link_to 'my projects', user_projects_path(@user) %><br>
 

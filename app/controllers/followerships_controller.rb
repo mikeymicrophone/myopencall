@@ -2,7 +2,12 @@ class FollowershipsController < ApplicationController
   # GET /followerships
   # GET /followerships.xml
   def index
-    @followerships = Followership.all
+    @followerships = if current_user
+      @following = current_user.followers
+      current_user.followeds
+    else
+      []
+    end
 
     respond_to do |format|
       format.html # index.html.erb
