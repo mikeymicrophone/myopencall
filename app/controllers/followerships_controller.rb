@@ -3,8 +3,8 @@ class FollowershipsController < ApplicationController
   # GET /followerships.xml
   def index
     @followerships = if current_user
-      @following = current_user.followers
-      current_user.followeds
+      @following = current_user.followerships
+      current_user.followings
     else
       []
     end

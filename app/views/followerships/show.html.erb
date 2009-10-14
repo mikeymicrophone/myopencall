@@ -1,18 +1,7 @@
 <p>
-  <b>Follower:</b>
-  <%=h @followership.follower_id %>
+  <%= link_to @followership.follower.name, @followership.follower unless current_user == @followership.follower %>
+  <%= link_to @followership.followed.name, @followership.followed unless current_user == @followership.followed %>
 </p>
 
-<p>
-  <b>Followed:</b>
-  <%=h @followership.followed_id %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%=h @followership.status %>
-</p>
-
-
-<%= link_to 'Edit', edit_followership_path(@followership) %> |
-<%= link_to 'Back', followerships_path %>
+<p id="security">
+<%= link_to_remote '[block]', :url => followership_path(@followership, :followership => {:status => 'blocked'}), :method => :put, :target => 'security' if current_user == @followership.followed && @followership.status == 'following' %></p>

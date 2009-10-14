@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
   has_many :a_friendships, :foreign_key => :accepter_id, :class_name => 'Friendship', :conditions => {:status => 'accepted'}
   has_many :b_friendships, :foreign_key => :requester_id, :class_name => 'Friendship', :conditions => {:status => 'accepted'}
   has_many :requested_friendships, :foreign_key => :accepter_id, :class_name => 'Friendship', :conditions => {:status => 'requested'}
-  has_many :followerships, :foreign_key => :followed_id
+  has_many :followerships, :foreign_key => :followed_id, :conditions => {:status => 'following'}
   has_many :followers, :through => :followerships
-  has_many :followings, :foreign_key => :follower_id, :class_name => 'Followership'
+  has_many :followings, :foreign_key => :follower_id, :class_name => 'Followership', :conditions => {:status => 'following'}
   has_many :followeds, :through => :followings
   # has_many :call_appointments, :through => :calls
   
