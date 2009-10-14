@@ -2,7 +2,12 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.xml
   def index
-    @companies = Company.all
+    @companies = if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @project.involved_companies
+    else
+      Company.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

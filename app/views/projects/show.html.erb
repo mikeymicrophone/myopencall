@@ -24,7 +24,10 @@
 </div>
 
 <div id='company_involvement'>
-  <%= link_to 'get a company involved', new_involvement_path(:involvement => {:participant_type => 'Company', :project_id => @project.id}) %>
+  <%= link_to 'get a company involved', new_involvement_path(:involvement => {:participant_type => 'Company', :project_id => @project.id}) %><br>
+  <% @project.involved_companies.each do |c| %>
+    <%= link_to c.name, c %>
+  <% end %>
 </div>
 
 <div id="interest">

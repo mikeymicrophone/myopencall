@@ -37,6 +37,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     project.resources :details
     project.resources :involvements
+    project.resources :companies
   end
   map.resources :involvements
   map.resources :roles do |role|
