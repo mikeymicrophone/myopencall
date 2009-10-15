@@ -11,7 +11,7 @@ class Call < ActiveRecord::Base
   after_create :notify_followers
   
   def notify_followers
-    InterestMailer.deliver_new_call_notification(self, role.interested_users.map { |u| u.email }.join(', '))
+    InterestMailer.deliver_new_call_notification(self, role.interested_users.map { |u| u.email }.join(', ')) unless role.interested_users.empty?
   end
   
   def name
