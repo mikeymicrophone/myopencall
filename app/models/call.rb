@@ -5,6 +5,7 @@ class Call < ActiveRecord::Base
   has_many :details, :as => :subject
   has_many :interests, :as => :subject
   has_many :interested_users, :through => :interests, :source => :user
+  has_many :appointments, :as => :host
   belongs_to :creator, :class_name => 'User'
   named_scope :upcoming, :conditions => ['time > ?', Time.now]
   

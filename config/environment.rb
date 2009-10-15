@@ -12,7 +12,9 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip'
   config.gem 'haml'
   config.gem 'wysihat-engine'
+  config.gem 'notahat-machinist',
+   :lib => 'machinist',
+   :source => 'http://gems.github.com'
   
   config.time_zone = 'UTC'
-
 end

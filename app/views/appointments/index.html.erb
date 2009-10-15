@@ -16,6 +16,17 @@
     <%= link_to 'reschedule', edit_appointment_path(appointment) %></td>
   </tr>
 <% end %>
+<tr><td>appointments for calls you're managing</td></tr>
+<% @call_appointments.each do |appointment| %>
+  <tr>
+    <td><%= link_to appointment.visitor.name, appointment.visitor %></td>
+    <td><%= link_to '[show]', appointment %></td>
+    <td><%= link_to 'accept', appointment_path(appointment, :appointment => {:status => 'accepted'}), :method => :put unless appointment.accepted? %>
+    <%= link_to 'reject', appointment_path(appointment, :appointment => {:status => 'rejected'}), :method => :put unless appointment.rejected? %>
+    <%= link_to 'reschedule', edit_appointment_path(appointment) %></td>
+  </tr>
+<% end %>
+
 
 <tr>
   <% if @visiting_appointments.present? %>

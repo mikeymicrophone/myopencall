@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
       is_employed_at apointment.host
     end
   end
+  
+  def call_appointments
+    calls.map { |c| c.appointments }.flatten
+  end
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
@@ -84,7 +88,5 @@ class User < ActiveRecord::Base
   def activate!
     self.active = true
     save
-  end
-  
-  
+  end  
 end

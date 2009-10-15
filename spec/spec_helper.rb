@@ -5,6 +5,7 @@ require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_
 require 'spec/autorun'
 require 'spec/rails'
 require 'spec/rr'
+require File.dirname(__FILE__) + "/blueprints"
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

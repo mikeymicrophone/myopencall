@@ -4,7 +4,9 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = if current_user
       @visiting_appointments = current_user.visiting_appointments
+      @call_appointments = current_user.call_appointments
       current_user.hosting_appointments
+      
     else
       []
     end
