@@ -1,7 +1,7 @@
 var toolbars = [];
 
 var WysihatHelper = {
-  faceBoxFile: function()
+  faceboxFile: function()
   {
     facebox.loading();
     new Effect.Appear($('facebox'), {duration: .3});
@@ -45,29 +45,57 @@ var WysihatHelper = {
       iframe.contentWindow.document.body.innerHTML = $('html_editor').value;
     });
   },
-  
-  faceboxPaste: function()
-  {
-    facebox.loading();
-    new Effect.Appear($('facebox'), {duration: .3});
-    iframe = this
-    facebox.reveal('<textarea id=\"paste_editor\" style=\"width:100%; height:400px;\"></textarea>', null);         
-    Event.observe('paste_editor', 'change', function(event) {
-      iframe.contentWindow.document.body.innerHTML = iframe.contentWindow.document.body.innerHTML + $('paste_editor').value.escapeHTML();
-    });
-  }
 }
 
 WysiHat.Editor.include(WysihatHelper);
 
 Event.observe(window, 'load', function() {
-	$$('textarea').each(function(i){   
+	$$('textarea.wysihat_editor').each(function(i){   
     var editor = WysiHat.Editor.attach(i.id);
     var toolbar = new WysiHat.Toolbar(editor);
 		toolbars[i.id] = toolbar;
+		
+		editor.outputFilter = function(text) {
+      return text.formatHTMLOutput().sanitize({
+        tags: ['span', 'p', 'br', 'strong', 'em', 'a'],
+        attributes: ['id', 'href']
+      });
+    };
+
+    editor.observe("wysihat:paste", function(event) {
+      setTimeout(function() {
+        event.target.reload();
+      }, 1);
+    });
+		
+		$$('form').each(function(f){
+			f.onsubmit = function(){
+				editor.save();
+			}
+		});
   });
- 	  
-  $$('form').each().onsubmit = function(){ 
-    editor.save();
-  };
 });
+
+function addButtons(tag_id, buttons){
+	Event.observe(window, 'load', function() {
+		buttons.each(function(button){
+			
+			switch(button.toLowerCase()){
+				case 'image':
+					toolbars[tag_id].addButton({label : button.gsub('_','-').camelize().capitalize(), handler: function(editor) { return editor.faceboxFile(editor); }}); 
+				break;
+				case 'link':
+					toolbars[tag_id].addButton({label : button.gsub('_','-').camelize().capitalize(), handler: function(editor) { return editor.faceboxLink(editor); }}); 
+				break;
+				case 'html':
+					toolbars[tag_id].addButton({label : button.gsub('_','-').camelize().capitalize(), handler: function(editor) { return editor.faceboxHTML(editor); }}); 
+				break;
+				case 'paste':
+					toolbars[tag_id].addButton({label : button.gsub('_','-').camelize().capitalize(), handler: function(editor) { return editor.faceboxPaste(editor); }}); 
+				break;
+				default:
+					toolbars[tag_id].addButton({label : button.gsub('_','-').camelize().capitalize()});
+			}
+		})                                        
+	})
+}
