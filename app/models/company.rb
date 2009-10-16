@@ -5,4 +5,6 @@ class Company < ActiveRecord::Base
   has_many :projects, :through => :involvements
   has_many :employments
   has_many :employees, :through => :employments, :source => :user
+  has_many :businesses
+  has_many :cities, :through => :businesses
 end

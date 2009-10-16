@@ -1,0 +1,22 @@
+<h1>where do you do business?</h1>
+
+<% form_for(@business) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, :value => @business.company.andand.name %>
+  </p>
+  <p>
+    <%= f.label :company , @business.company.andand.name %><br />
+    <%= f.hidden_field :company_id %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.select :city, City.all.sort { |c| c.name }.map { |c| [c.name + ', ' + c.state.name, c.id] } %>
+  </p>
+  <p>
+    <%= f.submit 'represent!' %>
+  </p>
+<% end %>
+
+<%= link_to 'my offices', businesses_path %>

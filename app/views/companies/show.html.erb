@@ -17,3 +17,6 @@
 <%= link_to 'involved projects', company_projects_path(@company) %>
 
 <%= link_to '[edit]', edit_company_path(@company) if current_user == @company.creator %>
+<% @company.cities.each do |c| %>
+  <%= link_to c.name, c %>
+<% end %>

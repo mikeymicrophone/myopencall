@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :followers, :through => :followerships
   has_many :followings, :foreign_key => :follower_id, :class_name => 'Followership', :conditions => {:status => 'following'}
   has_many :followeds, :through => :followings
+  has_many :businesses, :through => :employers
   # has_many :call_appointments, :through => :calls
   
   acts_as_authentic

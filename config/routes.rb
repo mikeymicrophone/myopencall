@@ -25,6 +25,9 @@ ActionController::Routing::Routes.draw do |map|
     company.resources :employments
     company.resources :involvements
     company.resources :appointments
+    company.resources :businesses
+    company.resources :cities
+    company.resources :states
   end
   
   map.resources :employments
@@ -58,10 +61,25 @@ ActionController::Routing::Routes.draw do |map|
     state.resources :calls
     state.resources :cities
     state.resources :locations
+    state.resources :businesses
+    state.resources :companies
+    state.resources :employees
   end
   map.resources :cities do |city|
     city.resources :calls
     city.resources :locations
+    city.resources :businesses
+    city.resources :companies
+  end
+  
+  map.resources :businesses do |business|
+    business.resources :cities
+    business.resources :companies
+    business.resources :employees
+    business.resources :users
+    business.resources :projects
+    business.resources :calls
+    business.resources :roles
   end
   
   map.resources :details

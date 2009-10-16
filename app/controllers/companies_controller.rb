@@ -5,6 +5,12 @@ class CompaniesController < ApplicationController
     @companies = if params[:project_id]
       @project = Project.find(params[:project_id])
       @project.involved_companies
+    elsif params[:city_id]
+      @city = City.find params[:city_id]
+      @city.companies
+    elsif params[:state_id]
+      @state = State.find params[:state_id]
+      @state.companies
     else
       Company.all
     end

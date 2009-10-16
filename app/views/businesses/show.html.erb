@@ -1,0 +1,13 @@
+<p>
+  <b>Company:</b>
+  <%=h @business.company %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @business.city %>
+</p>
+
+
+<%= link_to 'Edit', edit_business_path(@business) %> |
+<%= link_to 'Back', businesses_path %>
